@@ -6,12 +6,12 @@ here = os.path.abspath(os.path.dirname(__file__))
 README = open(os.path.join(here, 'README.txt')).read()
 CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
-requires = ['pyramid', 'WebError']
+requires = ['pyramid', 'WebError', 'github']
 
 setup(name='collective.pullrequestreview',
       version='0.0',
       description='collective.pullrequestreview',
-      long_description=README + '\n\n' +  CHANGES,
+      long_description=README + '\n\n' + CHANGES,
       classifiers=[
         "Programming Language :: Python",
         "Framework :: Pylons",
@@ -28,10 +28,13 @@ setup(name='collective.pullrequestreview',
       install_requires=requires,
       tests_require=requires,
       test_suite="collectivepullrequestreview",
-      entry_points = """\
+      entry_points="""\
       [paste.app_factory]
       main = collectivepullrequestreview:main
+      [console_scripts]
+      listHooks = collectivepullrequestreview.scripts.listHooks:main
+      addHook = collectivepullrequestreview.scripts.addHook:main
+      testHook = collectivepullrequestreview.scripts.testHook:main
       """,
       paster_plugins=['pyramid'],
       )
-
