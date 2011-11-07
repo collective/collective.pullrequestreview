@@ -7,6 +7,7 @@ README = open(os.path.join(here, 'README.txt')).read()
 CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
 requires = ['pyramid', 'WebError', 'github']
+test_requires = requires + ['unittest2']
 
 setup(name='collective.pullrequestreview',
       version='0.0',
@@ -26,7 +27,12 @@ setup(name='collective.pullrequestreview',
       include_package_data=True,
       zip_safe=False,
       install_requires=requires,
-      tests_require=requires,
+      tests_require=test_requires,
+      extras_require = {
+          'test': [
+              'unittest2',
+          ]
+      },
       test_suite="collectivepullrequestreview",
       entry_points="""\
       [paste.app_factory]
