@@ -6,7 +6,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 README = open(os.path.join(here, 'README.txt')).read()
 CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
-requires = ['pyramid', 'WebError', 'github']
+requires = ['pyramid', 'WebError', 'github', 'github.event', 'pyflakes']
 test_requires = requires + ['unittest2']
 
 setup(name='collective.pullrequestreview',
@@ -28,7 +28,7 @@ setup(name='collective.pullrequestreview',
       zip_safe=False,
       install_requires=requires,
       tests_require=test_requires,
-      extras_require = {
+      extras_require={
           'test': [
               'unittest2',
           ]
@@ -37,10 +37,6 @@ setup(name='collective.pullrequestreview',
       entry_points="""\
       [paste.app_factory]
       main = collectivepullrequestreview:main
-      [console_scripts]
-      listHooks = collectivepullrequestreview.scripts.listHooks:main
-      addHook = collectivepullrequestreview.scripts.addHook:main
-      testHook = collectivepullrequestreview.scripts.testHook:main
       """,
       paster_plugins=['pyramid'],
       )
